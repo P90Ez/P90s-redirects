@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <script>
     console.log(window.location);
+        var Path = "/";
 
-    const searchParams = new URLSearchParams(window.location.search);
-    var Path = "/";
-    if(searchParams.has("path")) Path = searchParams.get("path");
-    if(Path == "") Path = "/";
+    if(window.location.pathname == "/")
+    {
+        const searchParams = new URLSearchParams(window.location.search);
+        if(searchParams.has("path")) Path = searchParams.get("path");
+        if(Path == "") Path = "/";
+    }else
+    {
+        Path = window.location.pathname;
+    }
 
     fetch("redirects.json")
     .then(x => 
