@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<script>
+    const searchParams = new URLSearchParams(window.location.search);
+    var Path = "/";
+    if(searchParams.has("path")) Path = searchParams.get("path");
+    if(Path == "") Path = "/";
+
+    fetch("redirects.json")
+    .then(x => 
+    {
+        return x.json();
+    })
+    .then(redirects => 
+    {
+        if(!redirects.hasOwnProperty(Path)) Path = "/";
+
+        //console.log("Redirected to " + redirects[Path]);
+        window.location.replace(redirects[Path]);
+    })
+</script>
