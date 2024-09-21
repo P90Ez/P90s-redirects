@@ -11,6 +11,10 @@
     }else
     {
         Path = window.location.pathname;
+
+        if(Path.charAt(0) === '/') {
+            Path = Path.substring(1);
+        }
     }
 
     fetch("redirects.json")
