@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <script>
-    console.log(window.location);
-        var Path = "/";
+    //console.log(window.location);
+    var Path = "/";
 
     if(window.location.pathname == "/")
     {
@@ -26,7 +26,7 @@
     {
         if(!redirects.hasOwnProperty(Path)) Path = "/";
 
-        console.log("Redirected to " + redirects[Path]);
-        //window.location.replace(redirects[Path]);
+        //console.log("Redirected to " + redirects[Path]);
+        window.location.replace(redirects[Path]);
     })
 </script>
