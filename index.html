@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <script>
+    console.log(window.location);
+
     const searchParams = new URLSearchParams(window.location.search);
     var Path = "/";
     if(searchParams.has("path")) Path = searchParams.get("path");
@@ -14,7 +16,7 @@
     {
         if(!redirects.hasOwnProperty(Path)) Path = "/";
 
-        //console.log("Redirected to " + redirects[Path]);
-        window.location.replace(redirects[Path]);
+        console.log("Redirected to " + redirects[Path]);
+        //window.location.replace(redirects[Path]);
     })
 </script>
