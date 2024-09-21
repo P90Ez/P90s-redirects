@@ -1,22 +1,16 @@
 <!DOCTYPE html>
+
+<noscript>Enable JavaScript to use redirects!</noscript>
 <script>
     //console.log(window.location);
-    var Path = "/";
 
-    if(window.location.pathname == "/")
-    {
-        const searchParams = new URLSearchParams(window.location.search);
-        if(searchParams.has("path")) Path = searchParams.get("path");
-        if(Path == "") Path = "/";
-    }else
-    {
-        Path = window.location.pathname;
-
-        if(Path.charAt(0) === '/') {
-            Path = Path.substring(1);
-        }
+    //get path
+    var Path = window.location.pathname;
+    if(Path.charAt(0) === '/') {
+        Path = Path.substring(1);
     }
 
+    //get redirects file and do redirect
     fetch("redirects.json")
     .then(x => 
     {
@@ -29,4 +23,10 @@
         //console.log("Redirected to " + redirects[Path]);
         window.location.replace(redirects[Path]);
     })
+    .catch((err) =>{
+        document.getElementById("error").innerText = "Something went wrong!";
+        console.log(err);
+    });
 </script>
+
+<span id="error"></span>
